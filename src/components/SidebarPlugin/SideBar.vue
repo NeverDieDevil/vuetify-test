@@ -7,6 +7,8 @@
       expand-on-hover
       permanent
       class="drawer"
+      rail-width="80"
+      width="260"
     >
       <div class="drawer-overlay">
         <v-list>
@@ -17,50 +19,45 @@
             <template v-slot:append>
               <v-btn
                 variant="text"
-                :icon="icon"
+                :icon="mainIcon"
                 @click.stop="switchRail()"
               ></v-btn>
             </template>
           </v-list-item>
         </v-list>
         <v-divider></v-divider>
-        <v-list>
-          <v-list-item
-            prepend-icon="mdi-view-dashboard"
-            title="Dashboard"
-            to="/dashboard"
-          >
-          </v-list-item>
-        </v-list>
-        <v-divider></v-divider>
-        <v-list>
-          <v-list-item
-            prepend-icon="mdi-view-dashboard"
-            title="Dashboard"
-            to="/dashboard"
-          >
-          </v-list-item>
-          <v-list-item
-            prepend-icon="mdi-account-box"
-            title="User"
-            to="/User"
-          ></v-list-item>
-          <v-list-item prepend-icon="mdi-gavel" title="Settings"></v-list-item>
-        </v-list>
+        <SidebarItem v-for="listItem in listItems" :item="listItem" />
       </div>
     </v-navigation-drawer>
   </div>
 </template>
 
 <script setup>
+  import SidebarItem from "./SidebarItem.vue";
+  const listItems = [
+    {
+      icon: "mdi-view-dashboard",
+      title: "Dashboard",
+      link: "/dashboard",
+    },
+    {
+      icon: "mdi-account-box",
+      title: "User",
+      link: "/User",
+    },
+    {
+      icon: "mdi-gavel",
+      title: "Settings",
+      link: "/somewhere",
+    },
+  ];
   import { ref } from "vue";
   const drawer = ref(true);
   const rail = ref(true);
-  //   const client = ref([""]);
-  const icon = ref("mdi-dots-vertical");
+  const mainIcon = ref("mdi-dots-vertical");
   const switchRail = () => {
     rail.value = !rail.value;
-    icon.value = rail.value ? "mdi-dots-vertical" : "mdi-view-dashboard";
+    mainIcon.value = rail.value ? "mdi-dots-vertical" : "mdi-view-dashboard";
   };
 </script>
 

@@ -2,7 +2,7 @@
   <div>
     <v-layout>
       <side-bar></side-bar>
-      <v-app-bar prominent class="bg-deep-purple" light>
+      <v-app-bar dark prominent class="bg-deep-purple" theme="light">
         <v-toolbar-title>Akcept.eu Panel Klienta</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn icon>
