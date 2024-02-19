@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-layout>
+    <v-app>
       <side-bar></side-bar>
       <v-app-bar dark prominent class="bg-deep-purple" theme="light">
         <v-toolbar-title>Akcept.eu Panel Klienta</v-toolbar-title>
@@ -16,7 +16,7 @@
       >
         <router-view></router-view>
       </v-main>
-    </v-layout>
+    </v-app>
   </div>
 </template>
 
