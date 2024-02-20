@@ -1,50 +1,95 @@
 <template>
   <v-container>
     <v-row justify="space-between">
-      <v-col v-for="item in items" cols="6">
-        <base-card
-          :type="item.type"
-          :title="item.title"
-          :subtitle="item.subtitle"
-          :text="item.text"
-          :icon="item.icon"
-          :buttonText="item.buttonText"
-        />
+      <v-col sm="12" md="6">
+        <warning-card
+          :title="infos[0].title"
+          :icon="infos[0].icon"
+          :status="infos[0].status"
+        >
+          {{
+            infos[0].status
+              ? "Wszystko gra, nie trzeba nic robić"
+              : "Nie pozwoliłeś nam kontaktować się z Tobą. Tracisz możliwość otrzymywania od nas atracyjnych propozycji i promocji."
+          }}
+        </warning-card>
+      </v-col>
+      <v-col sm="12" md="6">
+        <warning-card
+          :title="infos[1].title"
+          :icon="infos[1].icon"
+          :status="infos[1].status"
+        >
+          {{
+            infos[1].status
+              ? "Wszystko gra, nie trzeba nic robić"
+              : "Nie pozwoliłeś nam kontaktować się z Tobą. Tracisz możliwość otrzymywania od nas atracyjnych propozycji i promocji."
+          }}
+        </warning-card>
+      </v-col>
+      <v-col
+        v-for="info in infos.filter((item) => item.type === 'info')"
+        sm="12"
+        md="6"
+      >
+        <info-card
+          v-if="info.type === 'info'"
+          :title="info.title"
+          :icon="info.icon"
+          :btnText="info.btnText"
+          >{{ info.text }}</info-card
+        >
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script setup>
-  import BaseCard from "../components/Card/BaseCard.vue";
-
-  const items = [
+  import WarningCard from "@/components/Card/WarningCard.vue";
+  import InfoCard from "@/components/Card/InfoCard.vue";
+  const infos = [
     {
+      index: Math.random(),
+      name: "consent",
       type: "warning",
-      title: "Brak zgody na marketing",
-      text: "Nie pozwoliłeś nam kontaktować się z Tobą. Tracisz możliwość otrzymywania od nas atrakcyjnych propozycji  promocji.",
+      status: false,
       icon: "mdi-lock",
-      buttonText: "Przejdź do zgód",
+      title: "Zgody na marketing",
     },
     {
-      type: "info",
-      title: "Koszyk",
-      text: `Masz ${5} usług w koszyku`,
-      icon: "mdi-account-box",
-      buttonText: "Koszyk",
+      index: Math.random(),
+      name: "consent",
+      type: "warning",
+      status: true,
+      icon: "mdi-lock",
+      title: "Zgody na marketing",
     },
     {
+      index: Math.random(),
+      name: "consent",
       type: "info",
-      title: "Skontaktuj się z nami",
-      text: "Masz pytania? ",
-      icon: "mdi-account-box",
-      buttonText: "Skontaktuj się",
+      icon: "mdi-lock",
+      title: "Twój koszyk",
+      text: "Masz 5 pozycji w koszyku",
+
+      btnText: "Koszyk",
     },
     {
+      index: Math.random(),
+      name: "consent",
+      type: "warning",
+      status: true,
+      icon: "mdi-lock",
+      title: "Zgody na marketing",
+    },
+    {
+      index: Math.random(),
+      name: "consent",
       type: "info",
-      title: "Twoje dane",
-      text: "tu znajdują się Twoje dane",
-      icon: "mdi-account-box",
+      icon: "mdi-lock",
+      title: "Twój koszyk",
+      text: "Masz 5 pozycji w koszyku",
+      btnText: "Koszyk",
     },
   ];
 </script>

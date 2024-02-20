@@ -1,34 +1,32 @@
 <template>
-  <v-card
-    :min-height="baseCardProperties.height"
-    :title="title"
-    :prepend-icon="icon"
-    :color="type === `warning` ? 'red-darken-2' : 'blue-lighten-4'"
-    hover
-  >
-    <v-card-text>
-      {{ text }}
-    </v-card-text>
-    <v-card-action v-if="buttonText">
-      <v-card-text>
-        <v-btn>{{ buttonText }}</v-btn>
-      </v-card-text>
-    </v-card-action>
-  </v-card>
+  <v-hover v-slot="{ isHovering, props }">
+    <v-card
+      :elevation="isHovering ? 16 : 2"
+      :class="{ 'on-hover': isHovering }"
+      class="mx-auto"
+      v-bind="props"
+      :color="color"
+      min-height="200"
+    >
+      <v-card-item>
+        <template v-slot:prepend>
+          <v-icon>{{ icon }}</v-icon>
+        </template>
+        <v-card-title>{{ title }}</v-card-title>
+      </v-card-item>
+      <div class="ma-2">
+        <slot></slot>
+      </div>
+    </v-card>
+  </v-hover>
 </template>
 
 <script setup>
-  const props = defineProps([
-    "type",
-    "title",
-    "subtitle",
-    "text",
-    "icon",
-    "buttonText",
-  ]);
-  const baseCardProperties = {
-    height: 150,
-  };
+  const props = defineProps(["color", "title", "icon"]);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .card-text {
+    height: 100%;
+  }
+</style>
