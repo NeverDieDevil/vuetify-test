@@ -14,7 +14,7 @@
           }}
         </warning-card>
       </v-col>
-      <v-col sm="12" md="6">
+      <v-col sm="12" md="3">
         <warning-card
           :title="infos[1].title"
           :icon="infos[1].icon"
@@ -30,7 +30,7 @@
       <v-col
         v-for="info in infos.filter((item) => item.type === 'info')"
         sm="12"
-        md="6"
+        md="3"
       >
         <info-card
           v-if="info.type === 'info'"
@@ -39,6 +39,63 @@
           :btnText="info.btnText"
           >{{ info.text }}</info-card
         >
+      </v-col>
+      <v-col
+        v-for="info in infos.filter((item) => item.type === 'info')"
+        sm="12"
+        md="4"
+      >
+        <info-card
+          v-if="info.type === 'info'"
+          :title="info.title"
+          :icon="info.icon"
+        >
+          <p>Imie: {{ info.text }}</p>
+          <p>Nazwisko {{ info.text }}</p>
+          <p>E-mail: {{ info.text }}</p>
+        </info-card>
+      </v-col>
+      <v-col sm="12" md="4">
+        <info-card title="Status Twojej prezentacji" icon="mdi-magnify">
+          <p>Poniższe elementy powinny zostać uzupełnione</p>
+          <div class="d-flex flex-column" color="warning">
+            <div class="d-flex justify-space-between">
+              <p>Zdjęcia obiektu</p>
+              <v-icon>mdi-exclamation-thick</v-icon>
+            </div>
+            <div class="d-flex justify-space-between">
+              <p>Zdjęcia obiektu</p>
+              <v-icon>mdi-exclamation-thick</v-icon>
+            </div>
+            <div class="d-flex justify-space-between">
+              <p>Zdjęcia obiektu</p>
+              <v-icon>mdi-exclamation-thick</v-icon>
+            </div>
+            <div class="d-flex justify-space-between">
+              <p>Zdjęcia obiektu</p>
+              <v-icon>mdi-exclamation-thick</v-icon>
+            </div>
+          </div>
+        </info-card>
+      </v-col>
+      <v-col sm="12" md="5">
+        <info-card
+          title="Powiadomienia"
+          icon="mdi-magnify"
+          btnText="Przejdź do płatności"
+          color="warning"
+        >
+          <div class="d-flex align-center">
+            <v-icon class="mr-3">mdi-magnify</v-icon>
+            <div>
+              <p>Przypominamy o nie opłaconej proformie nr <b>129/2/2024</b></p>
+              <div class="d-flex justify-space-between">
+                <p>Wartość: 659,50 brutto</p>
+                <p>Termin: 2024-02-13</p>
+              </div>
+            </div>
+          </div>
+        </info-card>
       </v-col>
     </v-row>
   </v-container>

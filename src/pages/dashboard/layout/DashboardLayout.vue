@@ -1,10 +1,21 @@
 <template>
   <div>
-    <v-app>
-      <side-bar></side-bar>
-      <v-app-bar dark prominent class="bg-deep-purple" theme="light">
-        <v-toolbar-title>Akcept.eu Panel Klienta</v-toolbar-title>
+    <v-app theme="dark">
+      <side-bar />
+      <v-app-bar dark prominent theme="dark">
+        <v-toolbar-title>Tururu Panel Klienta</v-toolbar-title>
+
         <v-spacer></v-spacer>
+        <v-btn icon>
+          <v-badge content="5" color="error">
+            <v-icon>mdi-cart-variant</v-icon>
+          </v-badge>
+        </v-btn>
+        <v-btn icon>
+          <v-badge content="2" color="error">
+            <v-icon>mdi-bell</v-icon>
+          </v-badge>
+        </v-btn>
         <v-btn icon>
           <v-icon>mdi-export</v-icon>
         </v-btn>

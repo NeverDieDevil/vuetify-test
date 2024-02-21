@@ -13,8 +13,9 @@
       <div class="drawer-overlay">
         <v-list>
           <v-list-item
+            class="ml-3"
             prepend-avatar="https://demos.creative-tim.com/vue-material-dashboard-pro/img/vue-logo.png"
-            title="Akcept.eu"
+            title="Tururu"
           >
             <template v-slot:append>
               <v-btn
@@ -54,10 +55,10 @@
   import { ref } from "vue";
   const drawer = ref(true);
   const rail = ref(true);
-  const mainIcon = ref("mdi-dots-vertical");
+  const mainIcon = ref("mdi-pin-off");
   const switchRail = () => {
     rail.value = !rail.value;
-    mainIcon.value = rail.value ? "mdi-dots-vertical" : "mdi-view-dashboard";
+    mainIcon.value = rail.value ? "mdi-pin-off" : "mdi-pin";
   };
 </script>
 
