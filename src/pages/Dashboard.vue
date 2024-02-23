@@ -40,39 +40,37 @@
           >{{ info.text }}</info-card
         >
       </v-col>
-      <v-col
-        v-for="info in infos.filter((item) => item.type === 'info')"
-        sm="12"
-        md="4"
-      >
-        <info-card
-          v-if="info.type === 'info'"
-          :title="info.title"
-          :icon="info.icon"
-        >
-          <p>Imie: {{ info.text }}</p>
-          <p>Nazwisko {{ info.text }}</p>
-          <p>E-mail: {{ info.text }}</p>
-        </info-card>
-      </v-col>
+
       <v-col sm="12" md="4">
         <info-card title="Status Twojej prezentacji" icon="mdi-magnify">
-          <p>Poniższe elementy powinny zostać uzupełnione</p>
-          <div class="d-flex flex-column" color="warning">
-            <div class="d-flex justify-space-between">
-              <p>Zdjęcia obiektu</p>
+          <p class="mb-3">Poniższe elementy powinny zostać uzupełnione</p>
+          <div class="d-flex flex-column pa-3">
+            <div class="d-flex justify-space-between pa-1 bg-orange-darken-1">
+              <div class="d-flex mb-2">
+                <v-icon class="mr-2">mdi-lock</v-icon>
+                <p>Zdjęcia obiektu</p>
+              </div>
               <v-icon>mdi-exclamation-thick</v-icon>
             </div>
-            <div class="d-flex justify-space-between">
-              <p>Zdjęcia obiektu</p>
+            <div class="d-flex justify-space-between pa-1 bg-orange-darken-1">
+              <div class="d-flex mb-2">
+                <v-icon class="mr-2">mdi-lock</v-icon>
+                <p>Opis obiektu</p>
+              </div>
               <v-icon>mdi-exclamation-thick</v-icon>
             </div>
-            <div class="d-flex justify-space-between">
-              <p>Zdjęcia obiektu</p>
-              <v-icon>mdi-exclamation-thick</v-icon>
+            <div class="d-flex justify-space-between pa-1 bg-green">
+              <div class="d-flex mb-2">
+                <v-icon class="mr-2">mdi-lock</v-icon>
+                <p>Cennik obiektu</p>
+              </div>
+              <v-icon>mdi-check</v-icon>
             </div>
-            <div class="d-flex justify-space-between">
-              <p>Zdjęcia obiektu</p>
+            <div class="d-flex justify-space-between pa-1 bg-orange-darken-1">
+              <div class="d-flex mb-2">
+                <v-icon class="mr-2">mdi-lock</v-icon>
+                <p>Udogodnienia obiektu</p>
+              </div>
               <v-icon>mdi-exclamation-thick</v-icon>
             </div>
           </div>
@@ -95,6 +93,22 @@
               </div>
             </div>
           </div>
+        </info-card>
+      </v-col>
+      <v-col
+        v-for="info in infos.filter((item) => item.type === 'data')"
+        sm="12"
+        md="4"
+      >
+        <info-card
+          :title="info.title"
+          :icon="info.icon"
+          :btnText="info.btnText"
+          :btnPath="info.btnPath"
+        >
+          <p>{{ info.text[0] }}</p>
+          <p>{{ info.text[1] }}</p>
+          <p>{{ info.text[2] }}</p>
         </info-card>
       </v-col>
     </v-row>
@@ -123,30 +137,26 @@
     },
     {
       index: Math.random(),
-      name: "consent",
-      type: "info",
-      icon: "mdi-lock",
-      title: "Twój koszyk",
-      text: "Masz 5 pozycji w koszyku",
-
-      btnText: "Koszyk",
-    },
-    {
-      index: Math.random(),
-      name: "consent",
-      type: "warning",
-      status: true,
-      icon: "mdi-lock",
-      title: "Zgody na marketing",
-    },
-    {
-      index: Math.random(),
-      name: "consent",
+      name: "cart",
       type: "info",
       icon: "mdi-lock",
       title: "Twój koszyk",
       text: "Masz 5 pozycji w koszyku",
       btnText: "Koszyk",
+    },
+    {
+      index: Math.random(),
+      name: "data",
+      type: "data",
+      icon: "mdi-lock",
+      title: "Twoje Dane",
+      text: [
+        "Nazwa Obiektu: Przykładowy Obiekt Michał",
+        "Adres email: michal.obszanski@akcept.eu",
+        "Telefon główny: +48 624 666 125",
+      ],
+      btnText: "Przejdź do zmiany danych",
+      btnPath: "/userdetailsform",
     },
   ];
 </script>

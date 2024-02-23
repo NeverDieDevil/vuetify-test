@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import DashboardLayout from "../pages/dashboard/layout/DashboardLayout.vue";
 import Dashboard from "../pages/Dashboard.vue";
 import User from "../pages/User.vue";
+import Details from "../pages/Details.vue";
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
         path: "user",
         name: "User",
         component: User,
+      },
+      {
+        path: "userdetailsform",
+        name: "User Details Form",
+        component: Details,
       },
     ],
   },

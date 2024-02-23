@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-app theme="dark">
+    <v-app theme="light">
       <side-bar />
-      <v-app-bar dark prominent theme="dark">
+      <v-app-bar dark prominent>
         <v-toolbar-title>Tururu Panel Klienta</v-toolbar-title>
 
         <v-spacer></v-spacer>
